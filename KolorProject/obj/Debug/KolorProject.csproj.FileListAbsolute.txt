@@ -4,3 +4,9 @@ C:\Users\Adam\Desktop\Programowanie\C#\Konsola\KolorProject\KolorProject\bin\Deb
 C:\Users\Adam\Desktop\Programowanie\C#\Konsola\KolorProject\KolorProject\obj\Debug\KolorProject.csprojResolveAssemblyReference.cache
 C:\Users\Adam\Desktop\Programowanie\C#\Konsola\KolorProject\KolorProject\obj\Debug\KolorProject.exe
 C:\Users\Adam\Desktop\Programowanie\C#\Konsola\KolorProject\KolorProject\obj\Debug\KolorProject.pdb
+C:\Users\Adam\Desktop\Programowanie\Git\Dungeon\KolorProject\KolorProject\bin\Debug\KolorProject.exe.config
+C:\Users\Adam\Desktop\Programowanie\Git\Dungeon\KolorProject\KolorProject\bin\Debug\KolorProject.exe
+C:\Users\Adam\Desktop\Programowanie\Git\Dungeon\KolorProject\KolorProject\bin\Debug\KolorProject.pdb
+C:\Users\Adam\Desktop\Programowanie\Git\Dungeon\KolorProject\KolorProject\obj\Debug\KolorProject.csprojResolveAssemblyReference.cache
+C:\Users\Adam\Desktop\Programowanie\Git\Dungeon\KolorProject\KolorProject\obj\Debug\KolorProject.exe
+C:\Users\Adam\Desktop\Programowanie\Git\Dungeon\KolorProject\KolorProject\obj\Debug\KolorProject.pdb
