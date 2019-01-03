@@ -133,7 +133,7 @@ namespace KolorProject
                     for (int i = 0; i < 3; i++)
                     {
                         mTeam.mCharacters[i].levelUp();
-                        enemyStrength += 1;
+                        
                     }
 
                 }//level up
@@ -147,7 +147,7 @@ namespace KolorProject
                 ++counter;
             }//Tier 2 dungeon
             if (dead) { Console.WriteLine("You have lasted {0} dungeons", counter); return; }
-            enemyStrength = 0;
+            //enemyStrength = 0;
             int m = 0;
             while (true)
             {
@@ -182,7 +182,7 @@ namespace KolorProject
                 }
                 ++counter;
                 ++m;
-            }
+            }//Tier 3
 
 
 
