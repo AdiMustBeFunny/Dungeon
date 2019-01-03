@@ -13,7 +13,13 @@ namespace KolorProject
         Bow_1,
         Sword_1,
         Plate_Armor_1,
-        Metal_Helmet_1
+        Magic_Staff_1,
+        Metal_Helmet_1,
+        Leather_Gloves,
+        Furious_Boots,
+        SlingShot,
+        Axe_1,
+        Enchanted_Rod
 
     }
      enum ETier_2_Treasure
@@ -54,7 +60,7 @@ namespace KolorProject
     static class All_Items
     {
         static Random rnd = new Random();
-        //there are usually more than one item of the same type
+        //there can be more than one item of the same type
         //it is so in order to increasy probability of selecting this item
         public static List<ETier_1_Treasure> Tier_1_treasure = new List<ETier_1_Treasure>()
             {
@@ -62,13 +68,18 @@ namespace KolorProject
                 ETier_1_Treasure.Minor_healing_potion,
                 ETier_1_Treasure.Bow_1,
                 ETier_1_Treasure.Sword_1,
+                ETier_1_Treasure.Magic_Staff_1,
                 ETier_1_Treasure.Plate_Armor_1,
-                ETier_1_Treasure.Metal_Helmet_1
+                ETier_1_Treasure.Metal_Helmet_1,
+                ETier_1_Treasure.Furious_Boots,
+                ETier_1_Treasure.Leather_Gloves,
+                ETier_1_Treasure.SlingShot,
+                ETier_1_Treasure.Axe_1,
+                ETier_1_Treasure.Enchanted_Rod
             };
 
         public static List<ETier_2_Treasure> Tier_2_treasure = new List<ETier_2_Treasure>()
             {
-                ETier_2_Treasure.MediumHealPotion,
                 ETier_2_Treasure.MediumHealPotion,
                 ETier_2_Treasure.MediumHealPotion,
                 ETier_2_Treasure.BiggusSwordus,
@@ -108,7 +119,7 @@ namespace KolorProject
                 ETier_3_Enemy.ShySuccubus
             };
 
-        public static Character genTier_1_Enemy()
+        public static Character genTier_1_Enemy(int strength=0)
         {
             Character mCharacter = null;
 
@@ -127,10 +138,17 @@ namespace KolorProject
             }
 
 
+            mCharacter.mAttributes.Strength += strength;
+            mCharacter.mAttributes.Agility += strength;
+            mCharacter.mAttributes.Intelligence += strength;
+            mCharacter.mAttributes.Constitiution += strength / 2;
+            mCharacter.mBasicStats.currentLevel += strength / 2;
+            mCharacter.calculateBasicStats();
+
             return mCharacter;
         }
 
-        public static Character genTier_2_Enemy()
+        public static Character genTier_2_Enemy(int strength = 0)
         {
             Character mCharacter = null;
 
@@ -156,7 +174,7 @@ namespace KolorProject
             return mCharacter;
         }
 
-        public static Character genTier_3_Enemy()
+        public static Character genTier_3_Enemy(int strength = 0)
         {
             Character mCharacter = null;
 
@@ -205,6 +223,24 @@ namespace KolorProject
                     break;
                 case ETier_1_Treasure.Plate_Armor_1:
                     mItem = new Plate_Armor_1();
+                    break;
+                case ETier_1_Treasure.Magic_Staff_1:
+                    mItem = new Magic_Staff_1();
+                    break;
+                case ETier_1_Treasure.Leather_Gloves:
+                    mItem = new Leather_Gloves();
+                    break;
+                case ETier_1_Treasure.Furious_Boots:
+                    mItem = new Furious_Boots();
+                    break;
+                case ETier_1_Treasure.Axe_1:
+                    mItem = new Axe_1();
+                    break;
+                case ETier_1_Treasure.SlingShot:
+                    mItem = new Slingshot();
+                    break;
+                case ETier_1_Treasure.Enchanted_Rod:
+                    mItem = new Enchanted_Rod();
                     break;
             }
 
@@ -306,7 +342,6 @@ namespace KolorProject
                     Console.WriteLine();
                     Console.WriteLine();
                     Console.WriteLine();
-
                 }
 
                 string itemName = "";
@@ -407,14 +442,16 @@ namespace KolorProject
         public int playerX = 1, playerY = 1;
         public int enemyTier;
         public int treasureTier;
+        public int enemyStrength;
 
-        public Room(int width, int height, Team player, int enemytier = 1, int num3x4 = 3, int treasuretier = 1)
+        public Room(int width, int height, Team player, int enemytier = 1, int num3x4 = 3, int treasuretier = 1,int enemystrength = 0)
         {
             mRoom = new Tile[height, width];
             Height = height;
             Width = width;
             enemyTier = enemytier;
             treasureTier = treasuretier;
+            enemyStrength = enemystrength;
             for (int i = 0; i < height; i++)
             {
                 for (int j = 0; j < width; j++)
@@ -587,7 +624,7 @@ namespace KolorProject
             {
                 for (int i = 0; i < teamSize; i++)
                 {
-                    Character currentEnemy = All_Items.genTier_1_Enemy();
+                    Character currentEnemy = All_Items.genTier_1_Enemy(enemyStrength);
 
                     enemy.mCharacters.Add(currentEnemy);
                 }
@@ -598,7 +635,7 @@ namespace KolorProject
             {
                 for (int i = 0; i < teamSize; i++)
                 {
-                    Character currentEnemy = All_Items.genTier_2_Enemy();
+                    Character currentEnemy = All_Items.genTier_2_Enemy(enemyStrength);
 
                     enemy.mCharacters.Add(currentEnemy);
                 }
@@ -609,7 +646,7 @@ namespace KolorProject
             {
                 for (int i = 0; i < teamSize; i++)
                 {
-                    Character currentEnemy = All_Items.genTier_3_Enemy();
+                    Character currentEnemy = All_Items.genTier_3_Enemy(enemyStrength);
 
                     enemy.mCharacters.Add(currentEnemy);
                 }
@@ -704,7 +741,7 @@ namespace KolorProject
             {
                 for (int i = 0; i < teamSize; i++)
                 {
-                    Character currentEnemy = All_Items.genTier_1_Enemy();
+                    Character currentEnemy = All_Items.genTier_1_Enemy(enemyStrength);
 
                     enemy.mCharacters.Add(currentEnemy);
                 }
@@ -715,7 +752,7 @@ namespace KolorProject
             {
                 for (int i = 0; i < teamSize; i++)
                 {
-                    Character currentEnemy = All_Items.genTier_2_Enemy();
+                    Character currentEnemy = All_Items.genTier_2_Enemy(enemyStrength);
 
                     enemy.mCharacters.Add(currentEnemy);
                 }
@@ -726,7 +763,7 @@ namespace KolorProject
             {
                 for (int i = 0; i < teamSize; i++)
                 {
-                    Character currentEnemy = All_Items.genTier_3_Enemy();
+                    Character currentEnemy = All_Items.genTier_3_Enemy(enemyStrength);
 
                     enemy.mCharacters.Add(currentEnemy);
                 }
@@ -1072,7 +1109,7 @@ namespace KolorProject
                                         if ((mWeapon as MeleWeapon) != null) Console.WriteLine("Physical melee dmg {0} - {1}", (mWeapon as MeleWeapon).minPhysicalAttack, (mWeapon as MeleWeapon).maxPhysicalAttack);
                                         else Console.WriteLine("Physical melee dmg 0 - 0");
                                         if ((mWeapon as RangedWeapon) != null) Console.WriteLine("Physical ranged dmg {0} - {1}", (mWeapon as RangedWeapon).minRangedPhysicalAttack, (mWeapon as RangedWeapon).maxRangedPhysicalAttack);
-                                        else Console.WriteLine("Physical ranged dmg 0 - 1");
+                                        else Console.WriteLine("Physical ranged dmg 0 - 0");
                                         Console.WriteLine("Magical dmg {0} - {1}", mWeapon.minMagicalAttack, mWeapon.maxMagicalAttack);
                                         Console.WriteLine("Do you want to equip this weapon? ( y//n )");
                                         Console.WriteLine("Or transfer it to a diffrent inventory? ( t )");

@@ -13,6 +13,7 @@ namespace KolorProject
         public CombatAbilities mCombatAbilities = new CombatAbilities();
         public Inventory mInventory = new Inventory();//i will probably create class for inventory as i will be needin' some methods to manage things
         public string name;
+
         public Random randomValue = new Random();
 
         public Character(string n)
@@ -27,10 +28,14 @@ namespace KolorProject
             // displayStats();
         }
 
-        public virtual void attack(Character target)
+        public List<int> attack(Character target)
         {
             int physicalDmgToDeal = calculatePhysicalDamage();
             int magicalDmgToDeal = calculateMagicalDamage();
+
+            List<int> list = new List<int>();//these values will be written to the fight log
+            list.Add(physicalDmgToDeal);
+            list.Add(magicalDmgToDeal);
 
             #region Taking physical armor into account
             // Console.WriteLine("{1} deals {0} dmg to {2}", physicalDmgToDeal,name,target.name);
@@ -65,6 +70,10 @@ namespace KolorProject
             target.mBasicStats.currentEndurance -= physicalDmgToDeal;
             target.mBasicStats.currentEndurance -= magicalDmgToDeal;
             // Console.WriteLine("{2} now has {0} endurance, and {1} armor", target.mBasicStats.currentEndurance, target.mBasicStats.currentPhysicalArmor,target.name);
+
+
+
+            return list;
         }
 
         public void calculateBasicStats()
@@ -221,7 +230,7 @@ namespace KolorProject
 
         public int calculateMinPhysicalAttack()
         {
-            int minAttack;
+            int minAttack=0;
             if (mInventory.mEquipedItems["weapon"] != null)
             {
                 if ((mInventory.mEquipedItems["weapon"] as Weapon).maxMagicalAttack == 0)
@@ -233,6 +242,19 @@ namespace KolorProject
                     else
                     {
                         minAttack = mBasicStats.minRangedPhysicalAttack + (mInventory.mEquipedItems["weapon"] as RangedWeapon).minRangedPhysicalAttack + (int)(((mInventory.mEquipedItems["weapon"] as RangedWeapon).minRangedPhysicalAttack + (mInventory.mEquipedItems["weapon"] as RangedWeapon).maxRangedPhysicalAttack) * 0.4 * mAttributes.Agility);
+                    }
+                }
+                else if((mInventory.mEquipedItems["weapon"] as Weapon).maxMagicalAttack != 0)
+                {
+                    if (mInventory.mEquipedItems["weapon"] as MeleWeapon != null)
+                    { //
+                        if ((mInventory.mEquipedItems["weapon"] as MeleWeapon).maxPhysicalAttack!=0)
+                        minAttack = mBasicStats.minPhysicalAttack + (mInventory.mEquipedItems["weapon"] as MeleWeapon).minPhysicalAttack + (int)(((mInventory.mEquipedItems["weapon"] as MeleWeapon).minPhysicalAttack + (mInventory.mEquipedItems["weapon"] as MeleWeapon).maxPhysicalAttack) * 0.4 * mAttributes.Strength);
+                    }
+                    else
+                    {
+                        if ((mInventory.mEquipedItems["weapon"] as RangedWeapon).maxRangedPhysicalAttack != 0)
+                            minAttack = mBasicStats.minRangedPhysicalAttack + (mInventory.mEquipedItems["weapon"] as RangedWeapon).minRangedPhysicalAttack + (int)(((mInventory.mEquipedItems["weapon"] as RangedWeapon).minRangedPhysicalAttack + (mInventory.mEquipedItems["weapon"] as RangedWeapon).maxRangedPhysicalAttack) * 0.4 * mAttributes.Agility);
                     }
                 }
                 else
@@ -248,7 +270,7 @@ namespace KolorProject
         }
         public int calculateMaxPhysicalAttack()
         {
-            int maxAttack;
+            int maxAttack=0;
             if (mInventory.mEquipedItems["weapon"] != null)
             {
                 if ((mInventory.mEquipedItems["weapon"] as Weapon).maxMagicalAttack == 0)
@@ -261,6 +283,21 @@ namespace KolorProject
                     {
                         maxAttack = mBasicStats.maxRangedPhysicalAttack + (mInventory.mEquipedItems["weapon"] as RangedWeapon).maxRangedPhysicalAttack + (int)(((mInventory.mEquipedItems["weapon"] as RangedWeapon).minRangedPhysicalAttack + (mInventory.mEquipedItems["weapon"] as RangedWeapon).maxRangedPhysicalAttack) * 0.4 * mAttributes.Agility);
                     }
+                }
+                else if((mInventory.mEquipedItems["weapon"] as Weapon).maxMagicalAttack != 0)
+                {
+
+                    if ((mInventory.mEquipedItems["weapon"] as MeleWeapon) != null )
+                    { //strength there as multiplier
+                        if((mInventory.mEquipedItems["weapon"] as MeleWeapon).maxPhysicalAttack != 0)
+                        maxAttack = mBasicStats.maxPhysicalAttack + (mInventory.mEquipedItems["weapon"] as MeleWeapon).maxPhysicalAttack + (int)(((mInventory.mEquipedItems["weapon"] as MeleWeapon).minPhysicalAttack + (mInventory.mEquipedItems["weapon"] as MeleWeapon).maxPhysicalAttack) * 0.4 * mAttributes.Strength);
+                    }
+                    else
+                    {
+                        if ((mInventory.mEquipedItems["weapon"] as RangedWeapon).maxRangedPhysicalAttack != 0)
+                            maxAttack = mBasicStats.maxRangedPhysicalAttack + (mInventory.mEquipedItems["weapon"] as RangedWeapon).maxRangedPhysicalAttack + (int)(((mInventory.mEquipedItems["weapon"] as RangedWeapon).minRangedPhysicalAttack + (mInventory.mEquipedItems["weapon"] as RangedWeapon).maxRangedPhysicalAttack) * 0.4 * mAttributes.Agility);
+                    }
+
                 }
                 else
                 {
@@ -448,11 +485,9 @@ namespace KolorProject
 
         public Bat_1() : base("Bat_1")
         {
-            /*
-            mBasicStats.currentLevel += 1;
-            calculateBasicStats();
-            mBasicStats.minMagicalAttack = 5;
-            mBasicStats.maxMagicalAttack = 10;*/
+
+            mBasicStats.minPhysicalAttack = 1;
+            mBasicStats.maxPhysicalAttack = 2;
         }
 
     }
@@ -478,6 +513,7 @@ namespace KolorProject
             calculateBasicStats();
             mBasicStats.minPhysicalAttack = 3;
             mBasicStats.maxPhysicalAttack = 4;
+            mInventory.mEquipedItems["weapon"] = new Claw_1();
         }
     }
 
@@ -516,6 +552,7 @@ namespace KolorProject
             calculateBasicStats();
             mBasicStats.minPhysicalAttack = 4;
             mBasicStats.maxPhysicalAttack = 4;
+            mInventory.mEquipedItems["weapon"] = new Claw_1();
         }
     }
 
@@ -534,6 +571,8 @@ namespace KolorProject
 
             mBasicStats.currentPhysicalArmor = 30;
             mBasicStats.currentMagicalArmor = 30;
+
+            mInventory.mEquipedItems["weapon"] = new Claw_1();
         }
     }
      class AbusiveJanitor : Character
@@ -547,6 +586,7 @@ namespace KolorProject
 
             mBasicStats.currentPhysicalArmor = 15;
 
+            mInventory.mEquipedItems["weapon"] = new Sword_1();
         }
     }
      class ImpressiveAnt : Character
@@ -687,6 +727,9 @@ namespace KolorProject
         Random rnd = new Random();
         Team Player;
         Team Enemy;
+
+        private string FightLog = "";
+
         public Combat(Team player, Team enemy)
         {
             Player = player;
@@ -702,6 +745,7 @@ namespace KolorProject
             //while both teams alive
             while (Player.alive() && Enemy.alive())
             {
+                
 
                 bool player_did_his_furn = false;
                 while (!player_did_his_furn)
@@ -715,6 +759,9 @@ namespace KolorProject
                     Enemy.displayFightInfo();
 
 
+                    //fight log
+                    Console.WriteLine("Fight Log:");
+                    Console.WriteLine(FightLog);
                     //process player's turn
                     Console.WriteLine("\n\nSelect character from your team by typing in his index");
 
@@ -784,10 +831,12 @@ namespace KolorProject
 
                         int enemyIndex = (int)cki.Key % 48;
 
-                        Player.mCharacters[heroIndex].attack(Enemy.mCharacters[enemyIndex]);
-
+                        List<int> mAttack = Player.mCharacters[heroIndex].attack(Enemy.mCharacters[enemyIndex]);
+                        FightLog = "";//clear precious string
+                        FightLog += Player.mCharacters[heroIndex].name + "(Index: " + heroIndex.ToString() + ") attacked " + Enemy.mCharacters[enemyIndex].name + "(Index: " + enemyIndex.ToString() + ") dealing "+mAttack[0].ToString()+" physical damage and "+mAttack[1].ToString()+" magical damage\n";
                         Player.mCharacters[heroIndex].mBasicStats.exhausted = true;
                         player_did_his_furn = true;
+
                     }
 
                     if (playersChoice == 2)//here inventory loop
@@ -883,12 +932,16 @@ namespace KolorProject
                 if (Enemy.getActiveCharacters().Count == 0) Enemy.resetExhausted();
                 List<int> activeEnemies = Enemy.getActiveCharacters();
 
-                Enemy.mCharacters[activeEnemies[0]].attack(Player.mCharacters[targetForEnemy[rnd.Next() % targetForEnemy.Count]]);
-                Enemy.mCharacters[activeEnemies[0]].mBasicStats.exhausted = true;
+                int playerIndex = rnd.Next() % targetForEnemy.Count;
+                int rndEnemyIndex = rnd.Next() % activeEnemies.Count;
+                List<int> enemyAttack = Enemy.mCharacters[activeEnemies[rndEnemyIndex]].attack(Player.mCharacters[targetForEnemy[playerIndex]]);
+                Enemy.mCharacters[activeEnemies[rndEnemyIndex]].mBasicStats.exhausted = true;
+                FightLog += Enemy.mCharacters[activeEnemies[rndEnemyIndex]].name + "(Index: " + activeEnemies[rndEnemyIndex].ToString() + ") attacked " + Player.mCharacters[targetForEnemy[playerIndex]].name + "(Index: " + targetForEnemy[playerIndex].ToString() + ") dealing " + enemyAttack[0].ToString() + " physical damage and " + enemyAttack[1].ToString() + " magical damage";
+
 
                 //enemy might have killed guy who was ready while other was exhausted so we set his flag to ready
                 if (Player.getActiveCharacters().Count == 0) Player.resetExhausted();
-
+                if (Enemy.getActiveCharacters().Count == 0) Enemy.resetExhausted();
 
             }//battle loop
 

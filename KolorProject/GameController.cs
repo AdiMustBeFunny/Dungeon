@@ -11,6 +11,7 @@ namespace KolorProject
 
         Team mTeam = new Team();
         private int counter = 0;
+        private int enemyStrength = 0;
         public GameController() { }
 
         public void initialize()
@@ -61,6 +62,8 @@ namespace KolorProject
             Console.WriteLine("This '7' value is subtracted from healthbank so now it is equal 20 - 7 = 13");
             Console.WriteLine("Once your endurance and healthbank is equal to 0 you loose");
             Console.WriteLine("Finishing level sets your healthbank and endurance back to max");
+            Console.WriteLine();
+            Console.WriteLine("To improve game experience it is advised to increase size of the terminal and font size");
             Console.WriteLine("GL HF");
             Console.ReadKey();
 
@@ -106,13 +109,15 @@ namespace KolorProject
                 mTeam.mCharacters[i].levelUp();
             }//level up
 
+            enemyStrength += 1;
+
             for (int c = 0; c < 3; c++)
             {
                 Console.Clear();
                 Console.WriteLine("You are about to enter Dungeon Tier2 lv.{0}", counter + 1);
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
-                Room r = new Room(25, 25, mTeam, 2, 7);
+                Room r = new Room(25, 25, mTeam, 2, 7,1,enemyStrength);
 
                 r.genRoom();
 
@@ -128,7 +133,9 @@ namespace KolorProject
                     for (int i = 0; i < 3; i++)
                     {
                         mTeam.mCharacters[i].levelUp();
+                        enemyStrength += 1;
                     }
+
                 }//level up
 
                 for (int i = 0; i < 3; i++)
@@ -148,7 +155,7 @@ namespace KolorProject
                 Console.WriteLine("You are about to enter Dungeon Tier 3 lv.{0}", m);
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
-                Room r = new Room(27, 27, mTeam, 3, 9, 2);
+                Room r = new Room(27, 27, mTeam, 3, 9, 2,enemyStrength);
 
                 r.genRoom();
 
@@ -165,6 +172,7 @@ namespace KolorProject
                     {
                         mTeam.mCharacters[i].levelUp();
                     }
+                    enemyStrength += 1;
                 }//level up
 
                 for (int i = 0; i < 3; i++)

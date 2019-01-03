@@ -157,10 +157,40 @@ namespace KolorProject
         }
     }
 
+    class Furious_Boots : Appearal
+    {
+
+        public Furious_Boots(int physicalarmor = 6, int magicalarmor = 5, EAppearalBodyPart bodyPart = EAppearalBodyPart.Boots, string name = "Furious_Boots")
+            : base(physicalarmor, magicalarmor, bodyPart, name)
+        {
+
+        }
+
+    }
+
+    class Leather_Gloves : Appearal
+    {
+
+        public Leather_Gloves(int physicalarmor = 5, int magicalarmor = 5, EAppearalBodyPart bodyPart = EAppearalBodyPart.Gauntlets, string name = "Leather_Gloves")
+            : base(physicalarmor, magicalarmor, bodyPart, name)
+        {
+
+        }
+
+    }
+
      class Sword_1 : MeleWeapon
     {
         public Sword_1(int minphysicalattack = 2, int maxphysicalattack = 4,
                       int minmagicalattack = 0, int maxmagicalattack = 0, string name = "Sword_1")
+            : base(minphysicalattack, maxphysicalattack, minmagicalattack, maxmagicalattack, name)
+        { }
+    }
+
+    class Axe_1 : MeleWeapon
+    {
+        public Axe_1(int minphysicalattack = 3, int maxphysicalattack = 4,
+                      int minmagicalattack = 0, int maxmagicalattack = 0, string name = "Axe_1")
             : base(minphysicalattack, maxphysicalattack, minmagicalattack, maxmagicalattack, name)
         { }
     }
@@ -195,6 +225,16 @@ namespace KolorProject
 
     }
 
+    class Enchanted_Rod : MeleWeapon
+    {
+
+        public Enchanted_Rod(int minphysicalattack = 0, int maxphysicalattack = 0,
+                      int minmagicalattack = 3, int maxmagicalattack = 7, string name = "Enchanted_Rod")
+            : base(minphysicalattack, maxphysicalattack, minmagicalattack, maxmagicalattack, name)
+        { }
+
+    }
+
      class Bow_1 : RangedWeapon
     {
         public Bow_1(int minrangedphysicalattack = 1, int maxrangedphysicalattack = 5,
@@ -206,7 +246,18 @@ namespace KolorProject
 
     }
 
-     class Metal_Fists_1 : MeleWeapon
+    class Slingshot : RangedWeapon
+    {
+        public Slingshot(int minrangedphysicalattack = 2, int maxrangedphysicalattack = 4,
+              int minmagicalattack = 0, int maxmagicalattack = 0, string name = "Bow_1")
+            : base(minrangedphysicalattack, maxrangedphysicalattack, minmagicalattack, maxmagicalattack, name)
+        {
+
+        }
+
+    }
+
+    class Metal_Fists_1 : MeleWeapon
     {
         public Metal_Fists_1(int minphysicalattack = 1, int maxphysicalattack = 2,
                       int minmagicalattack = 0, int maxmagicalattack = 0, string name = "Metal_Fists_1")
@@ -242,7 +293,7 @@ namespace KolorProject
 
      class MediumHealingPotion : HpPotion
     {
-        public MediumHealingPotion(EItemType mT = EItemType.Potion, EItemFunctionality mF = EItemFunctionality.Consumable, EPotionType mType = EPotionType.Health, string name = "Heal_Potion_2", int hptoreturn = 20)
+        public MediumHealingPotion(EItemType mT = EItemType.Potion, EItemFunctionality mF = EItemFunctionality.Consumable, EPotionType mType = EPotionType.Health, string name = "Heal_Potion_2", int hptoreturn = 30)
             : base(mT, mF, mType, name, hptoreturn) { }
     }
 
