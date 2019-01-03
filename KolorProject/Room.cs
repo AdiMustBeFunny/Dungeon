@@ -58,8 +58,7 @@ namespace KolorProject
         //it is so in order to increasy probability of selecting this item
         public static List<ETier_1_Treasure> Tier_1_treasure = new List<ETier_1_Treasure>()
             {
-                ETier_1_Treasure.Minor_healing_potion,
-                ETier_1_Treasure.Minor_healing_potion,
+                
                 ETier_1_Treasure.Minor_healing_potion,
                 ETier_1_Treasure.Bow_1,
                 ETier_1_Treasure.Sword_1,
@@ -1229,6 +1228,38 @@ namespace KolorProject
                                     }
 
                                     if (mPlayer.mTeam.mCharacters[playerIndex].mInventory.mEquipedItems[itemKey] == null) continue;
+                                    Console.WriteLine();
+                                    Console.WriteLine();
+                                    if (itemKey=="weapon")
+                                    {
+
+                                        if((mPlayer.mTeam.mCharacters[playerIndex].mInventory.mEquipedItems[itemKey])as MeleWeapon!=null)
+                                        {
+                                            MeleWeapon mItem = (mPlayer.mTeam.mCharacters[playerIndex].mInventory.mEquipedItems[itemKey]) as MeleWeapon;
+
+                                            Console.WriteLine("Physical attack: {0} - {1}",mItem.minPhysicalAttack, mItem.maxPhysicalAttack);
+                                            Console.WriteLine("Magical attack: {0} - {1}", mItem.minMagicalAttack, mItem.maxMagicalAttack);
+
+                                        }
+                                        if ((mPlayer.mTeam.mCharacters[playerIndex].mInventory.mEquipedItems[itemKey]) as RangedWeapon != null)
+                                        {
+                                            RangedWeapon mItem = (mPlayer.mTeam.mCharacters[playerIndex].mInventory.mEquipedItems[itemKey]) as RangedWeapon;
+
+                                            Console.WriteLine("Physical attack: {0} - {1}", mItem.minRangedPhysicalAttack, mItem.maxRangedPhysicalAttack);
+                                            Console.WriteLine("Magical attack: {0} - {1}", mItem.minMagicalAttack, mItem.maxMagicalAttack);
+
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        //appearal
+                                        Appearal mAppearal = (mPlayer.mTeam.mCharacters[playerIndex].mInventory.mEquipedItems[itemKey]) as Appearal;
+
+                                        Console.WriteLine("Physical armor: {0}", mAppearal.physicalArmor);
+                                        Console.WriteLine("Magical armor: {0}", mAppearal.magicalArmor);
+
+                                    }
                                     Console.WriteLine();
                                     Console.WriteLine("Unequip this item? ( y/n )");
                                     cki = new ConsoleKeyInfo();

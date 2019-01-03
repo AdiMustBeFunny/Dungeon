@@ -46,7 +46,7 @@ namespace KolorProject
             mTeam.mCharacters[0].mInventory.mEquipedItems["weapon"] = new Metal_Fists_1();
             mTeam.mCharacters[1].mInventory.mEquipedItems["weapon"] = new Metal_Fists_1();
             mTeam.mCharacters[2].mInventory.mEquipedItems["weapon"] = new Metal_Fists_1();
-            mTeam.mCharacters[0].mInventory.mEquipedItems["chest"] = new Plate_Armor_1();
+            
             Console.Clear();
             Console.WriteLine();
             Console.WriteLine("Before you start let me clarify some concepts: ");
