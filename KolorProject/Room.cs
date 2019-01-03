@@ -171,6 +171,13 @@ namespace KolorProject
                     break;
             }
 
+            mCharacter.mAttributes.Strength += strength;
+            mCharacter.mAttributes.Agility += strength;
+            mCharacter.mAttributes.Intelligence += strength;
+            mCharacter.mAttributes.Constitiution += strength / 2;
+            mCharacter.mBasicStats.currentLevel += strength / 2;
+            mCharacter.calculateBasicStats();
+
             return mCharacter;
         }
 
@@ -196,6 +203,13 @@ namespace KolorProject
                     mCharacter = new ShySuccubus();
                     break;
             }
+
+            mCharacter.mAttributes.Strength += strength;
+            mCharacter.mAttributes.Agility += strength;
+            mCharacter.mAttributes.Intelligence += strength;
+            mCharacter.mAttributes.Constitiution += strength / 2;
+            mCharacter.mBasicStats.currentLevel += strength / 2;
+            mCharacter.calculateBasicStats();
 
             return mCharacter;
         }
@@ -892,6 +906,9 @@ namespace KolorProject
         public void processMovement()
         {
             bool found_way_out = false;
+
+
+
             while (found_way_out == false)
             {
                 Console.Clear();
@@ -938,6 +955,7 @@ namespace KolorProject
                         mPlayer.mTeam.mCharacters[i].displayStats();
                     Console.WriteLine("Press any key to continue...");
                     Console.ReadKey();
+                    //clear
                 }
                 if (mInput == inputType.Moving)
                 {
@@ -956,6 +974,8 @@ namespace KolorProject
                         mRoom[playerY + y_dif, playerX + x_dif].mChar = '$';
                         playerX += x_dif;
                         playerY += y_dif;
+
+
                     }
                     else if (mRoom[playerY + y_dif, playerX + x_dif].mChar == 'Q')
                     {

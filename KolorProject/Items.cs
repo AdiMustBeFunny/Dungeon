@@ -129,9 +129,28 @@ namespace KolorProject
     }
 
 
+    #region enemyItems
+
+    class Bat_Claws:MeleWeapon
+    {
+        public Bat_Claws(int minphysicalattack = 0, int maxphysicalattack = 1,
+                      int minmagicalattack = 0, int maxmagicalattack = 0, string name = "Bat_Claws")
+            : base(minphysicalattack, maxphysicalattack, minmagicalattack, maxmagicalattack, name)
+        { }
+    }
+    class Goblin_Claws:MeleWeapon
+    {
+        public Goblin_Claws(int minphysicalattack = 1, int maxphysicalattack = 2,
+                              int minmagicalattack = 0, int maxmagicalattack = 0, string name = "Goblin_Claws")
+            : base(minphysicalattack, maxphysicalattack, minmagicalattack, maxmagicalattack, name)
+        { }
+    }
+
+#endregion
+
     #region Tier 1 items
 
-     class MinorHealingPotion : HpPotion
+    class MinorHealingPotion : HpPotion
     {
 
         public MinorHealingPotion(EItemType mT = EItemType.Potion, EItemFunctionality mF = EItemFunctionality.Consumable, EPotionType mType = EPotionType.Health, string name = "Heal_Potion_1", int hptoreturn = 10)

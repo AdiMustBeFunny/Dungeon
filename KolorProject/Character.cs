@@ -486,8 +486,10 @@ namespace KolorProject
         public Bat_1() : base("Bat_1")
         {
 
-            mBasicStats.minPhysicalAttack = 1;
-            mBasicStats.maxPhysicalAttack = 2;
+            //mBasicStats.minPhysicalAttack = 1;
+            //mBasicStats.maxPhysicalAttack = 2;
+            mInventory.mEquipedItems["weapon"] = new Bat_Claws();
+
         }
 
     }
@@ -496,8 +498,9 @@ namespace KolorProject
     {
         public Goblin_1() : base("Goblin_1")
         {
-            mBasicStats.minPhysicalAttack = 2;
-            mBasicStats.maxPhysicalAttack = 2;
+            //mBasicStats.minPhysicalAttack = 2;
+            //mBasicStats.maxPhysicalAttack = 2;
+            mInventory.mEquipedItems["weapon"] = new Goblin_Claws();
         }
 
     }
