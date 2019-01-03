@@ -174,8 +174,8 @@ namespace KolorProject
             mCharacter.mAttributes.Strength += strength;
             mCharacter.mAttributes.Agility += strength;
             mCharacter.mAttributes.Intelligence += strength;
-            mCharacter.mAttributes.Constitiution += strength / 2;
-            mCharacter.mBasicStats.currentLevel += strength / 2;
+           
+            mCharacter.mBasicStats.currentLevel += strength;
             mCharacter.calculateBasicStats();
 
             return mCharacter;
@@ -204,9 +204,9 @@ namespace KolorProject
                     break;
             }
 
-            mCharacter.mAttributes.Strength += strength;
-            mCharacter.mAttributes.Agility += strength;
-            mCharacter.mAttributes.Intelligence += strength;
+            mCharacter.mAttributes.Strength += strength/2;
+            mCharacter.mAttributes.Agility += strength/2;
+            mCharacter.mAttributes.Intelligence += strength/2;
             mCharacter.mAttributes.Constitiution += strength / 2;
             mCharacter.mBasicStats.currentLevel += strength / 2;
             mCharacter.calculateBasicStats();

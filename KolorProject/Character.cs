@@ -567,7 +567,7 @@ namespace KolorProject
     {
         public HeadlessHead() : base("HeadlessHead")
         {
-           // mBasicStats.currentLevel += 2;
+            mBasicStats.currentLevel += 3;
             //calculateBasicStats();
            // mBasicStats.minPhysicalAttack = 4;
            // mBasicStats.maxPhysicalAttack = 8;
@@ -582,7 +582,7 @@ namespace KolorProject
     {
         public AbusiveJanitor() : base("AbusiveJanitor")
         {
-            //mBasicStats.currentLevel += 2;
+            mBasicStats.currentLevel += 3;
             //calculateBasicStats();
             //mBasicStats.minPhysicalAttack = 7;
             //mBasicStats.maxPhysicalAttack = 10;
@@ -596,7 +596,7 @@ namespace KolorProject
     {
         public ImpressiveAnt() : base("ImpressiveAnt")
         {
-            //mBasicStats.currentLevel += 2;
+            mBasicStats.currentLevel += 3;
             //calculateBasicStats();
             //mBasicStats.minMagicalAttack = 6;
            // mBasicStats.maxMagicalAttack = 8;
@@ -611,7 +611,7 @@ namespace KolorProject
     {
         public ShySuccubus() : base("ShySuccubus")
         {
-           // mBasicStats.currentLevel += 2;
+            mBasicStats.currentLevel += 3;
            // calculateBasicStats();
            // mBasicStats.minMagicalAttack = 5;
            // mBasicStats.maxMagicalAttack = 12;
