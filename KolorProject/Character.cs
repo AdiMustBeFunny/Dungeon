@@ -512,10 +512,10 @@ namespace KolorProject
     {
         public Watcher() : base("Watcher")
         {
-            mBasicStats.currentLevel += 1;
-            calculateBasicStats();
-            mBasicStats.minPhysicalAttack = 3;
-            mBasicStats.maxPhysicalAttack = 4;
+           // mBasicStats.currentLevel += 1;
+           // calculateBasicStats();
+           // mBasicStats.minPhysicalAttack = 3;
+           // mBasicStats.maxPhysicalAttack = 4;
             mInventory.mEquipedItems["weapon"] = new Claw_1();
         }
     }
@@ -525,10 +525,10 @@ namespace KolorProject
 
         public CorruptedSanta() : base("Corrupted_Santa")
         {
-            mBasicStats.currentLevel += 1;
-            calculateBasicStats();
-            mBasicStats.minMagicalAttack = 2;
-            mBasicStats.maxMagicalAttack = 4;
+           // mBasicStats.currentLevel += 1;
+           // calculateBasicStats();
+           // mBasicStats.minMagicalAttack = 2;
+           // mBasicStats.maxMagicalAttack = 4;
             mInventory.mEquipedItems["weapon"] = new Magic_Wand();
         }
 
@@ -538,10 +538,10 @@ namespace KolorProject
     {
         public FrontEndWannabe() : base("FrontEndWannabe")
         {
-            mBasicStats.currentLevel += 1;
-            calculateBasicStats();
-            mBasicStats.minMagicalAttack = 2;
-            mBasicStats.maxMagicalAttack = 3;
+           // mBasicStats.currentLevel += 1;
+           // calculateBasicStats();
+           // mBasicStats.minMagicalAttack = 2;
+           // mBasicStats.maxMagicalAttack = 3;
             mInventory.mEquipedItems["weapon"] = new Magic_Wand();
         }
 
@@ -551,10 +551,10 @@ namespace KolorProject
     {
         public ViciousScrumMaster() : base("ViciousScrumMaster")
         {
-            mBasicStats.currentLevel += 1;
-            calculateBasicStats();
-            mBasicStats.minPhysicalAttack = 4;
-            mBasicStats.maxPhysicalAttack = 4;
+            //mBasicStats.currentLevel += 1;
+            //calculateBasicStats();
+           // mBasicStats.minPhysicalAttack = 4;
+           // mBasicStats.maxPhysicalAttack = 4;
             mInventory.mEquipedItems["weapon"] = new Claw_1();
         }
     }
@@ -567,10 +567,10 @@ namespace KolorProject
     {
         public HeadlessHead() : base("HeadlessHead")
         {
-            mBasicStats.currentLevel += 2;
-            calculateBasicStats();
-            mBasicStats.minPhysicalAttack = 4;
-            mBasicStats.maxPhysicalAttack = 8;
+           // mBasicStats.currentLevel += 2;
+            //calculateBasicStats();
+           // mBasicStats.minPhysicalAttack = 4;
+           // mBasicStats.maxPhysicalAttack = 8;
 
             mBasicStats.currentPhysicalArmor = 30;
             mBasicStats.currentMagicalArmor = 30;
@@ -582,10 +582,10 @@ namespace KolorProject
     {
         public AbusiveJanitor() : base("AbusiveJanitor")
         {
-            mBasicStats.currentLevel += 2;
-            calculateBasicStats();
-            mBasicStats.minPhysicalAttack = 7;
-            mBasicStats.maxPhysicalAttack = 10;
+            //mBasicStats.currentLevel += 2;
+            //calculateBasicStats();
+            //mBasicStats.minPhysicalAttack = 7;
+            //mBasicStats.maxPhysicalAttack = 10;
 
             mBasicStats.currentPhysicalArmor = 15;
 
@@ -596,10 +596,10 @@ namespace KolorProject
     {
         public ImpressiveAnt() : base("ImpressiveAnt")
         {
-            mBasicStats.currentLevel += 2;
-            calculateBasicStats();
-            mBasicStats.minMagicalAttack = 6;
-            mBasicStats.maxMagicalAttack = 8;
+            //mBasicStats.currentLevel += 2;
+            //calculateBasicStats();
+            //mBasicStats.minMagicalAttack = 6;
+           // mBasicStats.maxMagicalAttack = 8;
 
             mBasicStats.currentPhysicalArmor = 40;
             mBasicStats.currentMagicalArmor = 40;
@@ -611,10 +611,10 @@ namespace KolorProject
     {
         public ShySuccubus() : base("ShySuccubus")
         {
-            mBasicStats.currentLevel += 2;
-            calculateBasicStats();
-            mBasicStats.minMagicalAttack = 5;
-            mBasicStats.maxMagicalAttack = 12;
+           // mBasicStats.currentLevel += 2;
+           // calculateBasicStats();
+           // mBasicStats.minMagicalAttack = 5;
+           // mBasicStats.maxMagicalAttack = 12;
 
             mBasicStats.currentPhysicalArmor = 20;
 
